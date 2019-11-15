@@ -61,49 +61,24 @@ describe('/api/auth/register', () => {
   })
 })
 
-// describe('api/auth/login', () => {
-//   it('should return 400 if no username or password is provided', () => {
-//     request(server)
-//       .post('/api/auth/register')
-//       .set({"username": ''})
-//       .set({"password": ''})
-//       .then(res => {
-//       expect(res.status).toBe(400)
-//       })
-//   })
 
-//   it('should return 200 if username or password is provided', () => {
-//     request(server)
-//       .post('/api/auth/login')
-//       .set({"username": 'marc4'})
-//       .set({"password": 'pass'})
-//       .then(res => {
-//       expect(res.status).toBe(200)
-//       })
-//   })
-  
-// })
 
 describe('POST /api/auth/login', () => {
   it('should return 401 http status', () => {
     return request(server)
       .post('/api/auth/login')
-      .set('username', 'lfvfdgfa')
-      .set('password', 'fgdgdfg')
+      .send({'username': 'asdasdasd', 'password': 'asdasads'})
       .then(response => {
-        // This is not passing
-        // expect(response.status).toBe(401);
+        expect(response.status).toBe(401);
     });
   });
 
   it('should return 200 http status', () => {
     return request(server)
       .post('/api/auth/login')
-      .set('username', 'lisa4')
-      .set('password', 'pass')
+      .send({'username': 'marc4', 'password': 'pass'})
       .then(response => {
-        // This is not passing
-        // expect(response.status).toBe(200);
+        expect(response.status).toBe(200);
     });
   });
 })
